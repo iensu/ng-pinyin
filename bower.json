@@ -5,11 +5,15 @@
     "jens ostlund <jostlund@gmail.com>"
   ],
   "description": "Angular directive and filter for dynamic rendering of pinyin tone diactrics",
+  "homepage": "https://github.com/iensu/ng-pinyin",
   "main": "ng-pinyin.js",
   "keywords": [
     "pinyin",
     "angular",
-    "chinese"
+    "chinese",
+    "mandarin",
+    "directive",
+    "filter"
   ],
   "license": "MIT",
   "ignore": [
