@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="ng-pinyin">
+<head>
+    <meta charset="utf-8">
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../ng-pinyin.min.js"></script>
+</head>
+<body>
+    <div ng-controller="TestCtrl">
+        <div class="row">
+            Input field:<br/>
+            <input ng-pinyin ng-model="text" />
+        </div>
+        <p/>
+        <div class="row">
+            Textarea:<br/>
+            <textarea ng-model="doc" ng-pinyin></textarea>
+        </div>
+        <p/>
+        Filter:<br/>{{var | pinyin}}
+    </div>
+    <script>
+    var app = angular.module('ng-pinyin');
+
+    app.controller('TestCtrl', function($scope) {
+        $scope.text = null;
+        $scope.doc = null;
+        $scope.var = "pin1yin1 PIN1YIN1";
+    });
+    </script>
+</body>
+</html>
