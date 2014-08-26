@@ -50,6 +50,7 @@
         grunt.loadNpmTasks('grunt-ngmin');
 
         grunt.registerTask('test', ['watch:test']);
+        grunt.registerTask('unittest', ['karma:unit:start']);
         grunt.registerTask('build', ['jshint', 'karma:unit', 'ngmin:build']);
 
     };

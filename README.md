@@ -11,10 +11,14 @@ Each tone is represented by a digit between 1-4, after the syllable to which the
 
 ## Installation
 
-**ng-pinyin** is available via [bower](http://http://bower.io/):
+**ng-pinyin** is available via [bower](http://http://bower.io/) and [npm](https://www.npmjs.org/):
 
 ```
 bower install ng-pinyin --save
+```
+
+```
+npm install ng-pinyin --save
 ```
 
 ## Usage
