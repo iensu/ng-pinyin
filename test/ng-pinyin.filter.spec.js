@@ -47,6 +47,18 @@
             expect(pinyin("MAN2")).toBe("MÁN");
         });
 
+        it('should turn "Ao2" into "Áo"', function() {
+            expect(pinyin("Ao2")).toBe("Áo");
+        });
+
+        it('should turn "aO2" into "áO"', function() {
+            expect(pinyin("aO2")).toBe("áO");
+        });
+
+        it('should turn "yAN1Si1" into "yĀNSī', function() {
+            expect(pinyin("yAN1Si1")).toBe("yĀNSī");
+        });
+
         it('should not modify inputs without tonemarkings', function() {
             var text = "hej";
             expect(pinyin(text)).toBe(text);
@@ -55,6 +67,8 @@
             text = "battery will run out in 15 minutes...";
             expect(pinyin(text)).toBe(text);
             text = "AKB48 akb48";
+            expect(pinyin(text)).toBe(text);
+            text = "odjoadqfofnoisdjafhoc8dw778 RT28EH39R9DASaD2 !!";
             expect(pinyin(text)).toBe(text);
         });
     });
