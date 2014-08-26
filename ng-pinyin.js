@@ -4,49 +4,48 @@
     var app = angular.module('ng-pinyin', []);
 
     app.filter('pinyin', function() {
+
+        function getUpperCaseIndices(str) {
+            var indices = [];
+            for(var i = 0; i < str.length; i++) {
+                if(str[i] === str[i].toUpperCase()) {
+                    indices.push(i);
+                }
+            }
+            return indices;
+        }
+
+        function revertToUpperCase(str, indices) {
+            var chars = str.split('');
+            indices.map(function(idx) { 
+                chars[idx] = chars[idx].toUpperCase();
+            });
+            return chars.join('');
+        }
+
         return function(text) {
             var tonePtn = /([aeiouvüAEIOUVÜ]{1,2}(n|ng|r|\'er|N|NG|R|\'ER){0,1}[1234])/g;
             var toneMap = {
                 a: ['ā', 'á', 'ǎ', 'à'],
-                A: ['Ā', 'Á', 'Ǎ', 'À'],
                 ai: ['āi', 'ái', 'ǎi', 'ài'],
-                AI: ['ĀI', 'ÁI', 'ǍI', 'ÀI'],
                 ao: ['āo', 'áo', 'ǎo', 'ào'],
-                AO: ['ĀO', 'ÁO', 'ǍO', 'ÀO'],
                 e: ['ē', 'é', 'ě', 'è'],
-                E: ['Ē', 'É', 'Ě', 'È'],
                 ei: ['ēi', 'éi', 'ěi', 'èi'],
-                EI: ['ĒI', 'ÉI', 'ĚI', 'ÈI'],
                 i: ['ī', 'í', 'ǐ', 'ì'],
-                I: ['Ī', 'Í', 'Ǐ', 'Ì'],
                 ia: ['iā', 'iá', 'iǎ', 'ià'],
-                IA: ['IĀ', 'IÁ', 'IǍ', 'IÀ'], 
                 io: ['iō', 'ió', 'iǒ', 'iò'],
-                IO: ['IŌ', 'IÓ', 'IǑ', 'IÒ'],
                 iu: ['iū', 'iú', 'iǔ', 'iù'],
-                IU: ['IŪ', 'IÚ', 'IǓ', 'IÙ'],
                 o: ['ō', 'ó', 'ǒ', 'ò'],
-                O: ['Ō', 'Ó', 'Ǒ', 'Ò'],
                 ou: ['ōu', 'óu', 'ǒu', 'òu'],
-                OU: ['ŌU', 'ÓU', 'ǑU', 'ÒU'],
                 u: ['ū', 'ú', 'ǔ', 'ù'],
-                U: ['Ū', 'Ú', 'Ǔ', 'Ù'],
                 ua: ['uā', 'uá', 'uǎ', 'uà'],
-                UA: ['UĀ', 'UÁ', 'UǍ', 'UÀ'],
                 ue: ['uē', 'ué', 'uě', 'uè'],
-                UE: ['UĒ', 'UÉ', 'UĚ', 'UÈ'],
                 ui: ['uī', 'uí', 'uǐ', 'uì'],
-                UI: ['UĪ', 'UÍ', 'UǏ', 'UÌ'],
                 uo: ['uō', 'uó', 'uǒ', 'uò'],
-                UO: ['UŌ', 'UÓ', 'UǑ', 'UÒ'],
                 v: ['ǖ', 'ǘ', 'ǚ', 'ǜ'],
-                V: ['Ǖ', 'Ǘ', 'Ǚ', 'Ǜ'],
                 ve: ['ǖe', 'ǘe', 'ǚe', 'ǜe'],
-                VE: ['ǕE', 'ǗE', 'ǙE', 'ǛE'],
                 ü: ['ǖ', 'ǘ', 'ǚ', 'ǜ'],
-                Ü: ['Ǖ', 'Ǘ', 'Ǚ', 'Ǜ'],
-                üe: ['ǖe', 'ǘe', 'ǚe', 'ǜe'],
-                ÜE: ['ǕE', 'ǗE', 'ǙE', 'ǛE']
+                üe: ['ǖe', 'ǘe', 'ǚe', 'ǜe']
             };
             var tones = text.match(tonePtn);
             if (tones) {
@@ -55,8 +54,10 @@
                   var vowel = coda.slice(0, -1);
                   var suffix = vowel.match(/(n|ng|r|\'er|N|NG|R|\'ER)$/);
                   vowel = vowel.replace(/(n|ng|r|\'er|N|NG|R|\'ER)$/, '');
+                  var upperCaseIdxs = getUpperCaseIndices(vowel);
+                  vowel = vowel.toLowerCase();
                   var replacement = suffix && toneMap[vowel][toneIdx] + suffix[0] || toneMap[vowel][toneIdx];
-                  text = text.replace(coda, replacement);
+                  text = text.replace(coda, revertToUpperCase(replacement, upperCaseIdxs));
               });
             }
             return text;
