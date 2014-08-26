@@ -1,6 +1,6 @@
 {
   "name": "ng-pinyin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Angular directive and filter for dynamic rendering of pinyin tone diactrics",
   "main": "ng-pinyin.js",
   "directories": {
