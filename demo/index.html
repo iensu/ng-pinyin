@@ -2,22 +2,29 @@
 <html ng-app="ng-pinyin">
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="../ng-pinyin.min.js"></script>
 </head>
 <body>
-    <div ng-controller="TestCtrl">
+    <div class="container" ng-controller="TestCtrl">
+        <div class="page-header">
+            <h1>ng-pinyin demo</h1>
+        </div>
         <div class="row">
-            Input field:<br/>
+            <h4>Input field</h4>
             <input ng-pinyin ng-model="text" />
         </div>
-        <p/>
         <div class="row">
-            Textarea:<br/>
-            <textarea ng-model="doc" ng-pinyin></textarea>
+            <h4>Textarea</h4>
+            <textarea ng-model="doc" cols="50" rows="5" ng-pinyin></textarea>
         </div>
-        <p/>
-        Filter:<br/>{{var | pinyin}}
+        <div class="row">
+            <h4>Filter</h4>
+            {{var | pinyin}}
+        </div>
     </div>
     <script>
     var app = angular.module('ng-pinyin');
@@ -25,8 +32,8 @@
     app.controller('TestCtrl', function($scope) {
         $scope.text = null;
         $scope.doc = null;
-        $scope.var = "pin1yin1 PIN1YIN1";
+        $scope.var = "pin1yin1 Ni3hAo3";
     });
-    </script>
+    </script>  
 </body>
 </html>
