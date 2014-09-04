@@ -59,6 +59,14 @@
             expect(pinyin("yAN1Si1")).toBe("yĀNSī");
         });
 
+        it('should turn "xie3" into "xiě"', function() {
+            expect(pinyin("xie3")).toEqual("xiě");
+        });
+
+        it('should turn "xie3 dian3er shen2me ba" into "xiě diǎner shénme ba"', function() {
+            expect(pinyin("xie3 dian3er shen2me ba")).toEqual("xiě diǎner shénme ba");
+        });
+
         it('should not modify inputs without tonemarkings', function() {
             var text = "hej";
             expect(pinyin(text)).toBe(text);
