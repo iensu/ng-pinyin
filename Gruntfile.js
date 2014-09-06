@@ -11,8 +11,6 @@
                 files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js', 'ng-pinyin.js'],
                 options: {
                     globals: {
-                        //document: true,
-                        //jQuery: true,
                         console: true,
                         module: true,
                         angular: true
@@ -40,6 +38,12 @@
                     tasks: ['jshint', 'karma:unit']
                 }
                 
+            },
+
+            bump: {
+                options: {
+                    files: ['package.json', 'bower.json'],
+                }
             }
 
         });
@@ -48,6 +52,7 @@
         grunt.loadNpmTasks('grunt-contrib-jshint');
         grunt.loadNpmTasks('grunt-karma');
         grunt.loadNpmTasks('grunt-ngmin');
+        grunt.loadNpmTasks('grunt-bump');
 
         grunt.registerTask('test', ['watch:test']);
         grunt.registerTask('unittest', ['karma:unit:start']);
