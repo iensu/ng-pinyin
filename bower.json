@@ -4,7 +4,7 @@
   "authors": [
     "jens ostlund <jostlund@gmail.com>"
   ],
-  "description": "Angular directive and filter for dynamic rendering of pinyin tone diactrics",
+  "description": "Angular directive and filter for dynamic rendering of pinyin tone diacritics",
   "homepage": "https://github.com/iensu/ng-pinyin",
   "main": "ng-pinyin.js",
   "keywords": [

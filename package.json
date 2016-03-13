@@ -1,7 +1,7 @@
 {
   "name": "ng-pinyin",
   "version": "0.3.0",
-  "description": "Angular directive and filter for dynamic rendering of pinyin tone diactrics",
+  "description": "Angular directive and filter for dynamic rendering of pinyin tone diacritics",
   "keywords": [
     "angular",
     "pinyin",

@@ -1,7 +1,7 @@
 ng-pinyin
 =========
 
-Angular attribute directive and filter for dynamic rendering of Chinese pinyin tone diactrics.
+Angular attribute directive and filter for dynamic rendering of Chinese pinyin tone diacritics.
 
 Each tone is represented by a digit between 1-4, after the syllable to which the tone applies:
 * ni3hao3 -> nǐhǎo
